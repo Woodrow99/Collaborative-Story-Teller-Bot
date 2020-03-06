@@ -13,6 +13,7 @@ Note: punkt and averaged_perceptron_tagger must be downloaded from ntk.
 """
 
 import nltk
+import re
 from nltk.tokenize import word_tokenize
 from nltk import PorterStemmer
 #from nltk.stem import WordNetLemmatizer
@@ -24,6 +25,7 @@ from nltk.corpus import stopwords
 
 ps = PorterStemmer()
 stop_words = set(stopwords.words('english'))
+blanks = ['']
 
 def game_controller(num_of_turns):
     """
@@ -65,11 +67,13 @@ def preprocess(sentence_str):
 
     word_lst = word_tokenize(sentence_str)
     word_lst = [word.lower() for word in word_lst]
-    word_lst = [word for word in word_lst if not word in stop_words]
+    word_lst = [re.sub('\W+','', word) for word in word_lst]
+    #word_lst = [word for word in word_lst if not word in stop_words]
+    word_lst = [word for word in word_lst if not word in blanks]
     word_lst = [ps.stem(word) for word in word_lst]
     #word_tag_lst = nltk.pos_tag(word_lst)
-    for word in word_lst:
-        str_bytes(word)
+    #for word in word_lst:
+        #str_bytes(word)
     return word_lst
 
 
