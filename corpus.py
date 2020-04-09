@@ -9,7 +9,14 @@ from nltk.corpus import stopwords
 
 ps = PorterStemmer()
 stop_words = set(stopwords.words('english'))
-blanks = ['']
+blanks = ['', "\t", "\r", "\n", ' ']
+
+def listToString(s):  
+    str1 = ""  
+    for ele in s:  
+        str1 += ele + " "
+    str1 = str1[:-1] + "\n"      
+    return str1  
 
 def create_corpus():
     og_dir = os.getcwd()
@@ -26,18 +33,40 @@ def create_corpus():
         string_list = readable.split()
 
         for word in string_list:
-            word = word.lower()
-            word = re.sub('\W+','', word)
-            normSentsList.append(word)
+            if word not in blanks:
+                word = word.lower()
+                word = re.sub('\W+','', word)
+                if word not in blanks:
+                    normSentsList.append(word)
+
+
 
     start = 0
     end = 50
     sequenceList = []
     while end <= len(normSentsList):
-        sequenceList.append(normSentsList[start:end])
+        sequenceList.append(listToString(normSentsList[start:end]))
         start += 1 
         end += 1
-    fle = open("training_sequences", "w+")
-    fle. write(json.dumps(sequenceList))
-            
+
+    print(normSentsList[104131: 104181])
+    
+    """
+    size = []
+
+    for i in range(len(sequenceList)):
+        if len(sequenceList[i]) != 50 and len(size) < 100:
+            print(len(sequenceList[i]))
+            size.append(i)
+
+    print(sequenceList[0])
+    print(size)
+    """      
+
+    fle = open("training_sentence.txt", "w")
+    fle.writelines(sequenceList)
+
+
 create_corpus()
+
+ 
