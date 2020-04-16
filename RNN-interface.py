@@ -36,7 +36,7 @@ def RunBatch(fileName, myModel, tokenizer):
     y = sequences[:,-1]
     y = to_categorical(y, num_classes=vocabSize)
     print("Running batch for", fileName)
-    myModel.fit(X, y, batch_size=128, epochs=50)
+    myModel.fit(X, y, batch_size=128, epochs=75, shuffle=True)
     myModel.save('model.h5')
 
 main()
