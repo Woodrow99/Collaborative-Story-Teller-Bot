@@ -1,7 +1,7 @@
 from pickle import dump
 
 from keras.models import Sequential
-from keras.layers import Dense, Embedding, Bidirectional, LSTM
+from keras.layers import Dense, Embedding, Bidirectional, LSTM, Lambda
 from keras.optimizers import Adam
 from numpy import array
 from keras.utils.np_utils import to_categorical
@@ -26,18 +26,19 @@ seqLength = 50
 vocabSize = len(tokenizer.word_index) + 1
 os.chdir(og_dir)
 
-def CreateModel():
+def CreateModel(temp):
     model = Sequential()
     model.add(Embedding(vocabSize, seqLength))
-    model.add(Bidirectional(LSTM(128, return_sequences=True)))
+    #model.add(Bidirectional(LSTM(128, return_sequences=True)))
     model.add(Bidirectional(LSTM(128)))
-    model.add(Dense(128, activation='relu'))
+    #model.add(Dense(128, activation='relu'))
+    model.add(Lambda(lambda x: x / temp))
     model.add(Dense(vocabSize, activation='softmax'))
     print(model.summary())
     optimizer = Adam()
     model.compile(loss='categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
     model.save("model.h5")
-CreateModel()
+CreateModel(.9)
 dump(tokenizer, open('tokenizer.pkl', 'wb'))
 
 
