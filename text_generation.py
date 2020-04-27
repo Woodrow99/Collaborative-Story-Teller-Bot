@@ -10,7 +10,7 @@ Description: This program defines two functions that help generate text sequence
 note: requires tensorflow, keras, and pickle to run
 """
 
-def generate_seq(model, char_to_indice, indice_to_char, seq_len, seed_text, chars, length, temp):
+def generate_seq(model, char_to_indice, indice_to_char, seed_text, chars, gen_length, temp):
     """
 
     :param model: an object that represents the RNN
@@ -27,17 +27,16 @@ def generate_seq(model, char_to_indice, indice_to_char, seq_len, seed_text, char
     sentence = seed_text
     generated += sentence
 
-    for i in range(length):
-        x_pred = np.zeros((1, seq_len, len(chars)))
+    for i in range(gen_length):
+        x_pred = np.zeros((1, len(sentence), len(chars)))
         for t, char in enumerate(sentence):
-            if t in chars:
-                x_pred[0, t, char_to_indice[char]] = 1.
+            x_pred[0, t, char_to_indice[char]] = 1.
 
         preds = model.predict(x_pred, verbose=0)[0]
         next_index = sample(preds, temp)
         next_char = indice_to_char[next_index]
 
-        sentence = sentence[1:] + next_char
+        sentence = sentence[:] + next_char
         generated += next_char
 
     return generated
