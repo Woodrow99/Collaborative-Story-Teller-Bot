@@ -32,7 +32,8 @@ def main():
     x, y = to_numpy_array(seq_len, sequences, next_chars, chars, char_to_indice)
     model, history1 = build_model(len(chars), x, y)
     plot_data(history1)
-    save_model(char_to_indice, indice_to_char, model, chars)
+    model_name = str(input("Please give the model a name: "))
+    save_model(char_to_indice, indice_to_char, model, model_name, chars)
 
 def build_model(chars_len, x, y):
     """
@@ -104,7 +105,7 @@ def plot_data(history):
     plt.legend(['Train', 'Test'], loc='upper left')
     plt.show()
 
-def save_model(char_to_indice, indice_to_char, model, chars):
+def save_model(char_to_indice, indice_to_char, model, model_name, chars):
     """
     :param char_to_indice: a dictionary that maps a character to a specific indidce
     :param indice_to_char: a dictionary that maps an indice to a specific character
@@ -112,7 +113,7 @@ def save_model(char_to_indice, indice_to_char, model, chars):
     :param chars: a list of all unique characters that appear in the corpus text
     :return: nothing
     """
-    os.chdir(OG_DIR + "/model")
+    os.chdir(OG_DIR + "/models/" + model_name)
 
     indice_dict = open("indice_to_char.pkl", "wb")
     pickle.dump(indice_to_char, indice_dict)
@@ -127,7 +128,7 @@ def save_model(char_to_indice, indice_to_char, model, chars):
         char_file.write(char + "\n")
     char_file.close()
 
-    model.save("model.h5")
+    model.save(model_name + ".h5")
 
     os.chdir(OG_DIR)
 
