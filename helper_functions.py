@@ -48,6 +48,7 @@ def load_game(model_name):
 
 def preprocess(text):
     base_text = text.replace('”', '"')
-    base_text = text.replace('“', '"')
+    base_text = base_text.replace('“', '"')
     # sorts out everything that isn't a character, number, or punctuation.
-    text = re.sub('[^a-zA-Z0-9 \n\.\?\!\-\,\(\)\;\:\'\"]', ' ', base_text)
+    base_text = re.sub('[^a-zA-Z0-9 \n\.\?\!\-\,\(\)\;\:\'\"]', ' ', base_text)
+    return base_text
