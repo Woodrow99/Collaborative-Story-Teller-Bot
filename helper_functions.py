@@ -20,11 +20,7 @@ def load_doc(filename):
     :return text: a text file with certain characters replaced with white space.
     """
     file = open(filename, 'r', encoding="utf-8")
-    base_text = file.read()
-    base_text = base_text.replace('”', '"')
-    base_text = base_text.replace('“', '"')
-    #sorts out everything that isn't a character, number, or punctuation.
-    text = re.sub('[^a-zA-Z0-9 \n\.\?\!\-\,\(\)\;\:\'\"]', ' ', base_text)
+    text = file.read()
     file.close()
     return text
 
@@ -50,4 +46,8 @@ def load_game(model_name):
     chars.insert(0, "\n")
     return model, char_to_indice, indice_to_char, chars
 
-load_game('M2')
+def preprocess(text):
+    base_text = text.replace('”', '"')
+    base_text = text.replace('“', '"')
+    # sorts out everything that isn't a character, number, or punctuation.
+    text = re.sub('[^a-zA-Z0-9 \n\.\?\!\-\,\(\)\;\:\'\"]', ' ', base_text)
