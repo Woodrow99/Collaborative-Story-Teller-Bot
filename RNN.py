@@ -14,7 +14,7 @@ note: requires tensorflow, keras, pickle, and matplotlib.pyplot to run
 
 from keras.models import Sequential
 from keras.layers import Dense, LSTM, Dropout
-from helper_functions import load_doc
+from helper_functions import load_doc, preprocess
 import os
 import numpy as np
 import matplotlib.pyplot as plt
@@ -64,6 +64,7 @@ def build_text():
     os.chdir(OG_DIR + "/raw")
     for file_name in os.listdir():
         raw_file = load_doc(file_name)
+        raw_file = preprocess(raw_file)
         text += raw_file
     os.chdir(OG_DIR)
     return text
