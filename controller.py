@@ -21,10 +21,11 @@ model, cti, itc, chars = load_game("2LM")
 def main():
 
     numOfTurns = int(input("Insert a positive integer that represents how many turn that you want to play. "))
-    
-    for turn in range(numOfTurns):
-        text = input("Enter some text to begin communicating. \n")
+    print("Enter some text to begin communicating.")
 
-        print(generate_seq(model, cti, itc, len(text), preprocess(text), chars, len(text), 1.0))
+    for turn in range(numOfTurns):
+        text = input("")
+        print((generate_seq(model, cti, itc, len(text), preprocess(text), chars, len(text), 1.0)) + "\n")
+        
 
 main()
