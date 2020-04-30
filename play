@@ -8,7 +8,7 @@ Description: This program interacts with the controller to initialize a
 game for the user.
 """
 
-from controller import game_controller
+from controller import main
 
-rounds = int(input("How many rounds do you want to play? "))
-game_controller(rounds)
+
+main()
