@@ -1,8 +1,11 @@
-set PATH=%PATH%;D:\Program Files\Python\
-set PATH=%PATH%;D:\Program Files\Python\Scripts
-pip install virtualenv
-virtualenv venv
-call .\venv\Scripts\activate.bat
-call pip install -r requirements.txt
-deactivate
+SET PYTHON_ROOT=D:\Program Files\Python
 
+SET PIP="%PYTHON_ROOT%\Scripts\pip.exe"
+SET PYTHON="%PYTHON_ROOT%\python.exe"
+
+%PIP% install virtualenv
+%PYTHON% -m venv dynamicTBA
+
+call .\dynamicTBA\Scripts\activate.bat
+call pip install -r req.txt
+deactivate
