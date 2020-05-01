@@ -114,6 +114,7 @@ def save_model(char_to_indice, indice_to_char, model, model_name, chars):
     :param chars: a list of all unique characters that appear in the corpus text
     :return: nothing
     """
+    os.makedirs(OG_DIR + "/models/" + model_name)
     os.chdir(OG_DIR + "/models/" + model_name)
 
     indice_dict = open("indice_to_char.pkl", "wb")
