@@ -6,6 +6,7 @@ Recurrent neural networks are interesting structure of neural networks that appl
 1. Download the repository
 1. Unzip the Collaborative-Story-Teller-Bot.zip
 1. Open the Collaborative-Story-Teller-Bot directory
+1. Edit Installation.bat and change PYTHON_ROOT to include the path for python3
 1. Run Installation.bat
 ### For Linux:
 1. Download the repository
@@ -24,7 +25,6 @@ Requires Installation first
 ### For Linux
 1. Navigate to the Collaborative-Story-Teller-Bot directory in git bash
 Enter the following commands:
-> 1. python3 -m venv Collaborative-Story-Teller-Bot
 > 1. python3 controller.py
 ## Authors and acknowledgment
 - Drake Oswald
