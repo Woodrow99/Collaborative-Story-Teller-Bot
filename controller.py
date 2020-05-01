@@ -38,5 +38,7 @@ def main():
 
     for turn in range(numOfTurns):
         text = input("\n")
-        #print((generate_seq(model, cti, itc, preprocess(text), chars, len(text), 1))[len(text):])
-        print(generate_seq(model, cti, itc, preprocess(text), chars, len(text), 1))
+        print((generate_seq(model, cti, itc, preprocess(text), chars, len(text), 1))[len(text):])
+        #print(generate_seq(model, cti, itc, preprocess(text), chars, len(text), 1))
+
+main()
