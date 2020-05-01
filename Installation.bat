@@ -6,6 +6,6 @@ SET PYTHON="%PYTHON_ROOT%\python.exe"
 %PIP% install virtualenv
 %PYTHON% -m venv dynamicTBA
 
-call .\dynamicTBA\Scripts\activate.bat
+call .\Collaborative-Story-Teller-Bot\Scripts\activate.bat
 call pip install -r req.txt
 deactivate
