@@ -4,7 +4,7 @@ Recurrent neural networks are interesting structure of neural networks that appl
 ## Installation
 ### For Windows 10:
 1. Download the repository
-1. Unzip the Collabortive-Story-Teller-Bot.zip
+1. Unzip the Collaborative-Story-Teller-Bot.zip
 1. Open the Collaborative-Story-Teller-Bot directory
 1. Run Installation.bat
 ### For Linux:
@@ -16,3 +16,19 @@ Recurrent neural networks are interesting structure of neural networks that appl
 > 1. source Collaborative-Story-Teller-Bot/bin/activate
 > 1. pip install req.txt
 > 1. deactivate
+## Play the Game
+Requires Installation first
+### For Windows 10:
+1. Open the Collaborative-Story-Teller-Bot directory
+1. Run Run.bat
+### For Linux
+1. Navigate to the Collaborative-Story-Teller-Bot directory in git bash
+Enter the following commands:
+> 1. python3 -m venv Collaborative-Story-Teller-Bot
+> 1. python3 controller.py
+## Authors and acknowledgment
+- Drake Oswald
+- Joel Woodsmall
+- Isaac Zeimetz
+## License
+Public Domain
