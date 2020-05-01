@@ -14,7 +14,7 @@ Recurrent neural networks are interesting structure of neural networks that appl
 1. Enter the following commands:
 > 1. python3 -m venv Collaborative-Story-Teller-Bot
 > 1. source Collaborative-Story-Teller-Bot/bin/activate
-> 1. pip install req.txt
+> 1. pip install -r req.txt
 > 1. deactivate
 ## Play the Game
 Requires Installation first
