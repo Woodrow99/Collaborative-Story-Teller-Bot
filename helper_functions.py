@@ -44,7 +44,6 @@ def load_game(model_name):
     chars_str = load_doc("chars.txt")
     chars = chars_str.splitlines()
     chars.insert(0, "\n")
-    os.chdir(og_dir)
     return model, char_to_indice, indice_to_char, chars
 
 def preprocess(text):

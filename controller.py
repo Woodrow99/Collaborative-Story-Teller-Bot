@@ -19,13 +19,27 @@ from helper_functions import preprocess
 model, cti, itc, chars = load_game("2LM")
 
 def main():
+    valid = True
+    numOfTurns = ""
 
-    numOfTurns = int(input("Insert a positive integer that represents how many turn that you want to play. "))
+    while valid:
+        numOfTurns = input("Insert a positive integer that represents how many turns that you have. ")
+
+        while numOfTurns.isnumeric() == False:
+            numOfTurns = input("Insert a positive integer that represents how many turns that you have. ")
+        
+        numOfTurns = int(numOfTurns)
+
+        if numOfTurns >= 1:
+            valid = False
+
+
     print("Enter some text to begin communicating.")
 
     for turn in range(numOfTurns):
-        text = input("")
-        print((generate_seq(model, cti, itc, len(text), preprocess(text), chars, len(text), 1.0)) + "\n")
+        text = input("\n")
+        #print((generate_seq(model, cti, itc, preprocess(text), chars, len(text), 1))[len(text):])
+        print(generate_seq(model, cti, itc, preprocess(text), chars, len(text), 1))
         
 
 main()
