@@ -48,6 +48,7 @@ def sample(preds, temperature=1.0):
     :return: an integer that represents the most likely character divided by a temperature
     """
     # helper function to sample an index from a probability array
+    np.seterr(divide='ignore')
     preds = np.asarray(preds).astype('float64')
     preds = np.log(preds) / temperature
     exp_preds = np.exp(preds)
